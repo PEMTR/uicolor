@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        #drawing {
+            border: 2px solid;
+            border-color: grey;
+            float: left;
+        }
+        
+        #drawing2 {
+            border: 2px solid;
+            border-color: grey;
+            float: left;
+            margin-left: 10px;
+        }
+        
+        #colorvalue {
+            float: left;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .colorvalue-small {
+            width: 100px;
+            height: 50px;
+            border: 2px solid;
+            border-color: grey;
+            display: inline-flex;
+            margin-top: 0px;
+            padding-top: 0px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="colorselect">
+        <canvas id="drawing" width="400" height="400" v-on:click="clickpicker"></canvas>
+        <canvas id="drawing2" height="400" width="20" onclick="clickpicker2(event)"></canvas>
+        <div id="colorvalue">
+            <ol>
+                <li v-for="value in RGB">
+                    <span>{{value.name}}</span>
+                    <input type="number" max="255" min="0" class="colorvalue-small" v-model="value.value" />
+                </li>
+                <li v-for="value in HSL">
+                    <span>{{value.name}}</span>
+                    <input class="colorvalue-small" v-model="value.value" />
+                </li>
+
+            </ol>
+            <div>
+                <p>css</p>
+                <input type="text" v-on:keyup.enter="setColor" v-model="cssColor">
+            </div>
+            <ol>
+                <p>颜色</p>
+                <li v-for="color in colorValue">
+                    {{color}}
+                </li>
+            </ol>
+        </div>
+
+    </div>
+</body>
+<script src="js/uiselect.js">
+</script>
+
+</html>
